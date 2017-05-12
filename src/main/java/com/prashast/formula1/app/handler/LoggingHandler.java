@@ -1,4 +1,4 @@
-package com.prashast.formula1;
+package com.prashast.formula1.app.handler;
 
 import ratpack.handling.Context;
 import ratpack.handling.Handler;

@@ -1,0 +1,12 @@
+server:
+  publicAddress: http://localhost:7480
+  port: 7480
+db:
+  dataSourceProperties:
+    databaseName: formula1
+    url: jdbc:mysql://127.0.0.1:3306/formula1
+  dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+  username: formula1
+  password: formula1
+  maximumPoolSize: 4
+  connectionTimeout: 3000

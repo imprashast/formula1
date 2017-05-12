@@ -26,10 +26,18 @@ repositories {
 
 dependencies {
     testCompile 'junit:junit:4.11'
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.3.1'
+    // https://mvnrepository.com/artifact/com.zaxxer/HikariCP
+    compile group: 'com.zaxxer', name: 'HikariCP', version: '2.2.5'
+    compile 'io.ratpack:ratpack-hikari:1.4.6'
+    // https://mvnrepository.com/artifact/org.jdbi/jdbi
+    compile group: 'org.jdbi', name: 'jdbi', version: '2.78'
 
     // This is a Guice ratpack app
     compile ratpack.dependency("guice")
     runtime 'org.slf4j:slf4j-simple:1.7.10'
+    runtime "mysql:mysql-connector-java:5.1.24"
 }
 
 // The “ratpack” plugin is IDEA aware.

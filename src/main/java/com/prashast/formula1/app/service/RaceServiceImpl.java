@@ -1,22 +1,27 @@
-package com.prashast.formula1;
+package com.prashast.formula1.app.service;
 
-import ratpack.exec.Promise;
-import ratpack.http.Status;
-import ratpack.http.client.HttpClient;
-import ratpack.http.client.ReceivedResponse;
+import com.prashast.formula1.domain.db.RaceDao;
+import org.skife.jdbi.v2.DBI;
+import org.skife.jdbi.v2.Handle;
 
 
 import javax.inject.Inject;
-import java.io.IOException;
-import java.net.URI;
+import java.util.List;
+import java.util.Map;
 
 
 public class RaceServiceImpl implements RaceService {
 
-
-    private final HttpClient httpClient;
+    private final RaceDao dao;
+    private final DBI dbi;
 
     @Inject
+    public RaceServiceImpl(final RaceDao dao, final DBI dbi) {
+        this.dao = dao;
+        this.dbi = dbi;
+    }
+
+    /*@Inject
     RaceServiceImpl(HttpClient httpClient){
         this.httpClient = httpClient;
     }
@@ -50,10 +55,16 @@ public class RaceServiceImpl implements RaceService {
         else {
             throw new RuntimeException("Could not get response from postal code API. Got response code" + response.getStatusCode());
         }
-    }
+    }*/
 
-    private Promise<ReceivedResponse> doPost() throws Exception{
+    /*private Promise<ReceivedResponse> doPost() throws Exception{
         return httpClient.get(new URI("http://ergast.com/api/f1/current/last/results.json"));
+    }*/
+
+    public List<Map<String, Object>> getRaces(){
+        try(Handle transaction = dbi.open()) {
+            return dao.fetchRaces(transaction);
+        }
     }
 
 }
