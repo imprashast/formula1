@@ -20,4 +20,15 @@ public class RaceDao {
 
         return transaction.select(query);
     }
+
+    public List<Map<String, Object>> fetchRace(final Handle transaction,int year){
+        String query = "select * from races where year= :year";
+
+        return transaction.createQuery(query).bind("year",year).list();
+    }
+
+    public List<Map<String, Object>> fetchRaceYear(final Handle transaction){
+        String query = "select distinct year from races order by year desc";
+        return transaction.select(query);
+    }
 }

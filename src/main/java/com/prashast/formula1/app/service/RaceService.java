@@ -10,4 +10,6 @@ public interface RaceService {
 
     /*Promise<ReceivedResponse> getValue();*/
     List<Map<String, Object>> getRaces();
+    List<Map<String, Object>> getRace(int year);
+    List<Map<String, Object>> getRaceYear();
 }

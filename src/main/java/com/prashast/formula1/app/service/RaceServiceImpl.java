@@ -67,4 +67,16 @@ public class RaceServiceImpl implements RaceService {
         }
     }
 
+    public List<Map<String, Object>> getRace(int year){
+        try(Handle transaction = dbi.open()) {
+            return dao.fetchRace(transaction,year);
+        }
+    }
+
+    public List<Map<String, Object>> getRaceYear(){
+        try(Handle transaction = dbi.open()) {
+            return dao.fetchRaceYear(transaction);
+        }
+    }
+
 }

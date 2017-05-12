@@ -11,21 +11,19 @@ import javax.inject.Singleton;
 import static ratpack.jackson.Jackson.json;
 
 @Singleton
-public class RaceHandler implements Handler {
+public class RaceYearHandler implements Handler {
 
     private final RaceService raceService;
     private final ObjectMapper mapper;
 
     @Inject
-    public RaceHandler(RaceService raceService,ObjectMapper mapper){
+    public RaceYearHandler(RaceService raceService, ObjectMapper mapper) {
         this.raceService = raceService;
         this.mapper = mapper;
     }
 
     @Override
     public void handle(Context context) {
-        context.render(json(raceService.getRace(Integer.parseInt(context.getPathTokens().get("year")))));
+        context.render(json(raceService.getRaceYear()));
     }
-
-
 }
