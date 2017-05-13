@@ -4,7 +4,7 @@
 *.lock
 
 *.class
-
-.idea/*
+build/
+node_modules/
 .idea
 .gradle

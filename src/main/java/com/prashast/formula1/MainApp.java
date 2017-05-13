@@ -1,6 +1,7 @@
 package com.prashast.formula1;
 
 import com.prashast.formula1.app.config.RaceModule;
+import com.prashast.formula1.app.handler.CorsHandler;
 import com.prashast.formula1.app.handler.RaceHandler;
 
 import com.prashast.formula1.app.handler.RaceYearHandler;
@@ -25,6 +26,7 @@ public class MainApp {
                         .module(RaceModule.class)
                         .module(DbModule.class)
                         .module(HikariModule.class)
+                        .bind(CorsHandler.class)
                 ))
                 .handlers(chain -> chain
                         .prefix("formula1", path -> path

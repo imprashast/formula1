@@ -1,0 +1,38 @@
+{
+  "name": "formula1",
+  "version": "1.0.0",
+  "description": "Frontend for Formula1 app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imprashast/formula1.git"
+  },
+  "keywords": [
+    "formula1",
+    "react",
+    "ratpack"
+  ],
+  "author": "Prashast",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imprashast/formula1/issues"
+  },
+  "homepage": "https://github.com/imprashast/formula1#readme",
+  "dependencies": {
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-select": "^1.0.0-rc.3",
+    "webpack": "^2.5.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "webpack-dev-server": "2"
+  }
+}
