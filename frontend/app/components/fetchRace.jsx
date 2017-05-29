@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 
 export default class FetchRace extends React.Component {
     constructor(props) {
@@ -27,18 +28,11 @@ export default class FetchRace extends React.Component {
         return (
             <div >
                 <h1>All Events</h1>
-                <table>
-                    <tr>
-                        <th>Event title</th>
-                        <th>Event location</th>
-                    </tr>
-                    {this.state.posts.map(post =>
-                    <tr>
-                        <td>{post.date}</td>
-                        <td>{post.name} </td>
-                    </tr>
-                    )}
-                </table>
+                <BootstrapTable data={ this.state.posts } striped hover condensed>
+                    <TableHeaderColumn dataField='raceid' isKey>Race ID</TableHeaderColumn>
+                    <TableHeaderColumn dataField='name'>Race Name</TableHeaderColumn>
+                    <TableHeaderColumn dataField='date'>Race Date</TableHeaderColumn>
+                </BootstrapTable>
             </div>
 
         );
