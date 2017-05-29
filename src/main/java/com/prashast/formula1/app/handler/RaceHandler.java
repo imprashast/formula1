@@ -24,6 +24,7 @@ public class RaceHandler implements Handler {
 
     @Override
     public void handle(Context context) {
+        context.header("Access-Control-Allow-Origin", new Object[]{"*"});
         context.render(json(raceService.getRace(Integer.parseInt(context.getPathTokens().get("year")))));
     }
 
