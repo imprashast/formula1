@@ -2,10 +2,15 @@ import React, { Component } from 'react'
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, DefaultRoute, IndexLink } from 'react-router'
 import Year from './components/year'
 import FetchRace from './components/fetchRace'
+import { Provider } from 'react-redux'
+import store from './store'
+import logger from 'redux-logger'
+
 
 class App extends Component {
     render () {
         return (
+            <Provider store={store}>
             <Router history={hashHistory}>
                 <Route path='/' component={Container}>
                     <IndexRoute component={Home} />
@@ -24,10 +29,12 @@ class App extends Component {
                     <Route path='*' component={NotFound} />
                 </Route>
             </Router>
+            </Provider>
         )
     }
 }
 
+store.dispatch({type: 'SET_YEAR', value: 2017})
 const Query = (props) => (
     <h2>{props.location.query.message}</h2>
 )
@@ -85,7 +92,7 @@ const About = (props) => (
 
 const Yearconst = (props) => <Year/>
 
-const RaceFetch = (props) => <FetchRace year="2017"/>
+const RaceFetch = (props) => <FetchRace value="2017"/>
 
 const FullRace = (props) => (
     <div>

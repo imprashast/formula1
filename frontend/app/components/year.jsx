@@ -1,9 +1,9 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
 import axios from 'axios';
+import store from '../store'
 
-
-export default class Year extends React.Component {
+class Year extends React.Component {
     constructor() {
         super();
 
@@ -17,6 +17,7 @@ export default class Year extends React.Component {
 
     handleChange(event) {
         this.setState({value: event.target.value});
+        store.dispatch({type: 'UPDATE_RACE', value: event.target.value})
     }
 
     componentDidMount() {
@@ -43,3 +44,9 @@ export default class Year extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return { value: state.value };
+}
+
+export default connect(mapStateToProps)(Year);

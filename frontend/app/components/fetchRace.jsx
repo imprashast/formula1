@@ -1,9 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import store from '../store'
 
-export default class FetchRace extends React.Component {
+@connect((store) => {
+    return {
+        value: store.value
+    };
+})
+class FetchRace extends React.Component {
     constructor(props) {
         super(props);
 
@@ -13,7 +20,7 @@ export default class FetchRace extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:7480/formula1/race.json/${this.props.year}`)
+        axios.get(`http://localhost:7480/formula1/race.json/${this.props.value}`)
             .then(res => {
                 const posts = res.data;
                 this.setState({posts});
@@ -27,7 +34,7 @@ export default class FetchRace extends React.Component {
     render() {
         return (
             <div >
-                <h1>All Events</h1>
+                <h1>All Events for {this.props.value}</h1>
                 <BootstrapTable data={ this.state.posts } striped hover condensed>
                     <TableHeaderColumn dataField='raceid' isKey>Race ID</TableHeaderColumn>
                     <TableHeaderColumn dataField='name'>Race Name</TableHeaderColumn>
@@ -38,3 +45,8 @@ export default class FetchRace extends React.Component {
         );
     }
 }
+function mapStateToProps(state) {
+    return { value: state.value };
+}
+
+export default connect(mapStateToProps)(FetchRace);
